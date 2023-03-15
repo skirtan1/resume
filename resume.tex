@@ -1,0 +1,122 @@
+
+\doumentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+
+\usepackage{pdfcomment}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+%-------------------------------------------
+\addtolength{\oddsidemargin}{-0.475in}
+\addtolength{\evensidemargin}{-0.375in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+%-------------------------------------------
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+
+% Custom commands
+%-------------------------------------------
+\newcommand{\resumeItem}[2]{
+  \item{
+    \textbf{#1}{: \small #2 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeEduEntry}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{#3} & \textit{#4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeExpEntry}[5]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{#3 $\cdot$ #4} & \textit{#5} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\setlist{rightmargin=10pt}\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+
+\begin{center}
+    \textbf{{\huge Shreyas Kirtane}} 
+    \vspace{4pt}\hline\vspace{4pt} 
+    \textit{+1 (602-880-0958)}\hspace{2.5pt}\bullet\hspace{2.5pt} \textit{shreyaskirtane7@gmail.com}\hspace{2.5pt}\bullet\hspace{2.5pt}
+    \href{https://www.linkedin.com/in/shreyas-kirtane-760768179/}{\texit{linkedin}}
+
+\end{center}
+
+\section{Summary}
+\text{Have keen
+interests in distributed systems, software engineering, and software systems design.}
+\section{Technical Skills}
+\resumeItem{Programming Languages}{C++, Golang, Java, Python}
+\resumeItem{Cloud & CI/CD}{Docker, Kubernetes, AWS, gitlab-ci, jenkins}
+\resumeItem{DB/middlewares}{Spark, Postgres, Kafka, Redis, SQS, InfluxDB}
+\section{Education}
+\resumeEduEntry{Arizona State University}{Tempe, Arizona}{Masters of Science in Computer Science}{Jan 2023 - Present}
+\newline
+\resumeEduEntry{Birla Institute of Technology and Sciences, Pilani}{Hyderabad, India}{Bachelors of Electronics and Electrical Engineering}{Aug 2016 - Aug 2020}
+
+\section{Projects}
+\resumeSubItem{Distributed Key-Value server}{Implemented fault-tolerant and distributed kv server using go. Implemented and Used raft as the underlying consensus algorithm for getting components to agree on leader and log file}
+\resumeItem{Bootloader and On-Demand Paging on xv6}{Implemented On-Demand paging to allow lazy loading of memory pages and also implemented bootloader to allow user specified kernel for loading, in xv6 os}
+\resumeSubItem{Display management for bspwm}{Created scripts to automatically detect addition/removal of displays and send half of current screens on the new display or bring back screens from previous display on removal for bspwm}
+
+\section{Experience}
+
+\resumeExpEntry{F5 Networks}{Hyderabad, India}{Software Engineer - 2}{Velocity}{Sept 2022 - Dec 2022}
+\resumeItemListStart
+\resumeItem{SSH Timeout for Tenants and Controllers}{Implemented backend code and schema for ssh timeout configuration from Confd. Kept in mind distributed and fail-switch nature of primary and secondary controllers and propogated changes in tenants}
+\resumeItemListEnd
+
+\resumeExpEntry{F5 Networks}{Hyderabad, India}{Software Engineer - 1}{Velocity}{Sept 2020 - Aug 2022}
+\resumeItemListStart
+\resumeItem{Implemented Data Streaming for visibility into tenant}{Implemeted data streaming to send data to controllers from tenants for analytics using grpc}
+\resumeItem{Implemented backend code for cli interface}{Backend code implemented to configure the device based on configuration stored in Confd. Kept in mind compatibility in future upgrades while designing schema. Also considered upgrade scenarios for new schema changes.}
+\resumeItem{SNMP Trap implementation}{Implement backend code to handle snmp trap and handle configuration from Confd.}
+\resumeItem{Implemented Monitoring solution for velocity load balancers}{Implemented monitoring solution using influxdb and docker-compose to launch other components of solution. Made various configuration options available like retention policy and polling duration, etc}
+\resumeItemListEnd
+
+\resumeExpEntry{Zendrive}{Bangalore, India}{Software Development Intern}{Backend}{July 2019 - Dec 2019}
+\resumeItemListStart
+\resumeItem{Data collection scripts for bigquery}{Implemeted scripts to collected data from various source like s3, redshift, salesforce, elasticsearch to bigquery enabling analytics team to create dashboards using data in bigquery. Also implemented schema management to keep redshift and bigquery schema in sync and prevent failures.}
+\resumeItemListEnd
+
+\end{document}c
