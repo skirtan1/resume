@@ -1,5 +1,10 @@
+%-------------------------
+% Resume in Latex
+% Author : Vaishanth
+% License : MIT
+%------------------------
 
-\doumentclass[letterpaper,11pt]{article}
+\documentclass[letterpaper,11pt]{article}
 
 \usepackage{latexsym}
 \usepackage[empty]{fullpage}
@@ -8,115 +13,290 @@
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{verbatim}
 \usepackage{enumitem}
-\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{graphicx}%\setmainfont{Times New Roman}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\input{glyphtounicode}
 
-\usepackage{pdfcomment}
+\RequirePackage{tikz}
+\RequirePackage{xcolor}
 
-\pagestyle{fancy}
-\fancyhf{} % clear all header and footer fields
-\fancyfoot{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
+\definecolor{cvblue}{HTML}{0E5484}
+\definecolor{black}{HTML}{130810}
+\definecolor{darkcolor}{HTML}{0F4539}
+\definecolor{cvgreen}{HTML}{3BD80D}
+\definecolor{taggreen}{HTML}{00E278}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\colorlet{name}{black}
+\colorlet{tagline}{darkcolor}
+\colorlet{heading}{darkcolor}
+\colorlet{headingrule}{cvblue}
+\colorlet{accent}{darkcolor}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% \usepackage[T1]{fontenc}
+% \usepackage[T1]{fontenc}
+% \usepackage{cochineal}
+% \usepackage{fourier}
+
+% \usepackage{fontspec}
+% \usepackage{polyglossia}
+% \setmainlanguage{german}
+% \setmainfont{Times New Roman}
+
+% serif
+\usepackage{CormorantGaramond}
+\usepackage{charter}
+
+% \pagestyle{fancy}
+% \fancyhf{}  % clear all header and footer fields
+% \fancyfoot{}
+% \renewcommand{\headrulewidth}{0pt}
+% \renewcommand{\footrulewidth}{0pt}
 
 % Adjust margins
-%-------------------------------------------
-\addtolength{\oddsidemargin}{-0.475in}
-\addtolength{\evensidemargin}{-0.375in}
-\addtolength{\textwidth}{1in}
-\addtolength{\topmargin}{-.5in}
-\addtolength{\textheight}{1.0in}
-
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
 \urlstyle{same}
 
+\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
+
+\raggedbottom
 \raggedright
 \setlength{\tabcolsep}{0in}
 
 % Sections formatting
-%-------------------------------------------
 \titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
 
+%-------------------------
 % Custom commands
-%-------------------------------------------
-\newcommand{\resumeItem}[2]{
-  \item{
-    \textbf{#1}{: \small #2 \vspace{-2pt}}
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-1pt}}
   }
 }
 
-\newcommand{\resumeEduEntry}[4]{
-  \vspace{-1pt}\item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{#3} & \textit{#4} \\
-    \end{tabular*}\vspace{-5pt}
+\newcommand{\classesList}[4]{
+    \item\small{
+        {#1 #2 #3 #4 \vspace{-2pt}}
+  }
 }
 
-\newcommand{\resumeExpEntry}[5]{
-  \vspace{-1pt}\item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{#3 $\cdot$ #4} & \textit{#5} \\
-    \end{tabular*}\vspace{-5pt}
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{\large#1} & \textbf{\small #2} \\
+      \textit{\large#3} & \textit{\small #4} \\
+      
+    \end{tabular*}\vspace{-7pt}
 }
 
-\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
 
-\renewcommand{\labelitemii}{$\circ$}
+\newcommand{\resumeSingleSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{\large#1} & \textbf{\small #2} \\
+      
+    \end{tabular*}\vspace{-7pt}
+}
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,label={}]}
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\setlist{rightmargin=10pt}\begin{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.1in]}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 
+\newcommand\sbullet[1][.5]{\mathbin{\vcenter{\hbox{\scalebox{#1}{$\bullet$}}}}}
+
+%-------------------------------------------\usepackage{fontspec}
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \begin{document}
+%----------HEADING----------
 
 
 \begin{center}
-    \textbf{{\huge Shreyas Kirtane}} 
-    \vspace{4pt}\hline\vspace{4pt} 
-    \textit{+1 (602-880-0958)}\hspace{2.5pt}\bullet\hspace{2.5pt} \textit{shreyaskirtane7@gmail.com}\hspace{2.5pt}\bullet\hspace{2.5pt}
-    \href{https://www.linkedin.com/in/shreyas-kirtane-760768179/}{\texit{linkedin}}
-
+    {\huge Shreyas Kirtane} \\ \vspace{2pt} 
+    {+1 (602) 880 0958} ~ 
+    \small{-}
+    % \href{[url to portfolio]}{\color{blue}{Portfolio}} ~ 
+    % \small{-}
+    \href{mailto:[enter your email id]}{\color{blue}{skirtan1@asu.edu}} ~ 
+    \small{-}
+    \href{[url to linkedin profile]}{ \color{blue}{linkedin.com/in/shreyas-kirtane-760768179}}  ~
+    % \small{-}
+    % \href{[url to github profile]}{ \color{blue}{github.com/username}} ~
+    \vspace{-7pt}
 \end{center}
 
-\section{Summary}
-\text{Have keen
-interests in distributed systems, software engineering, and software systems design.}
-\section{Technical Skills}
-\resumeItem{Programming Languages}{C++, Golang, Java, Python}
-\resumeItem{Cloud & CI/CD}{Docker, Kubernetes, AWS, gitlab-ci, jenkins}
-\resumeItem{DB/middlewares}{Spark, Postgres, Kafka, Redis, SQS, InfluxDB}
-\section{Education}
-\resumeEduEntry{Arizona State University}{Tempe, Arizona}{Masters of Science in Computer Science}{Jan 2023 - Present}
-\newline
-\resumeEduEntry{Birla Institute of Technology and Sciences, Pilani}{Hyderabad, India}{Bachelors of Electronics and Electrical Engineering}{Aug 2016 - Aug 2020}
+%-----------EDUCATION-----------
+\section{\color{airforceblue}EDUCATION}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Arizona State University}{Tempe, AZ, USA}
+      {Master of Science in Computer Science; GPA: 4.0/4.0}{Jan 2023 - Dec 2024}
+    \vspace{-4pt}
+     \resumeSubheading
+      {Birla Institute of Technology and Sciences, Pilani}{Hyderabad, Telangana, India}
+      {Bachelor's of Engineering in Electrical and Electronics; GPA: 3.5/4.0}{Aug 2016 - July 2020}
+  \resumeSubHeadingListEnd
+  \vspace{-10pt}
 
-\section{Projects}
-\resumeSubItem{Distributed Key-Value server}{Implemented fault-tolerant and distributed kv server using go. Implemented and Used raft as the underlying consensus algorithm for getting components to agree on leader and log file}
-\resumeItem{Bootloader and On-Demand Paging on xv6}{Implemented On-Demand paging to allow lazy loading of memory pages and also implemented bootloader to allow user specified kernel for loading, in xv6 os}
-\resumeSubItem{Display management for bspwm}{Created scripts to automatically detect addition/removal of displays and send half of current screens on the new display or bring back screens from previous display on removal for bspwm}
+%-----------PROGRAMMING SKILLS-----------
+\section{\color{airforceblue}TECHNICAL SKILLS}
+ \begin{itemize}[leftmargin=0in, label={}]
+    \small{\item{
+    
+        \textbf{\normalsize{Software Development:}}{ \normalsize{HTML5, HTMX, CSS, JavaScript, React, NextJS, NodeJS, Confd, Design Patterns, Git, MongoDB, MySQL, Redis, Kafka, ZMQ, Elasticsearch, CockroachDB, SpringBoot, Flask, AWS, Docker, Kubernetes, Bash, GRPC, Jenkins, Git}} \\
+          \vspace{1.2pt}
+     \textbf{\normalsize{Programming Languages:}}{ \normalsize{Python, C++, Go, Rust}} \\
+      \vspace{1.2pt}
+      \textbf{\normalsize{Data Engineering:}}{ \normalsize{Spark, ETL, SQL, AWS Redshift, Airflow}} \\
+      \vspace{1.2pt}
+      
+     \textbf{\normalsize{AI \& ML:}}{ \normalsize{PyTorch,  Sklearn, Pandas, Numpy, OpenCV, Huggingface, TensorFlow, Matlab}} \\
+      \vspace{1.2pt}
+     % copy and paste above textbf block to add more 
+     }}
+ \end{itemize}
+ \vspace{-16pt}
+ 
+ %-----------EXPERIENCE-----------
+\section{\color{airforceblue}EXPERIENCE}
+  \resumeSubHeadingListStart
 
-\section{Experience}
+    \resumeSubheading
+      {Software Engineer II}{} 
+      {F5 Networks, Hyderabad, India}{Sept 2020 - Jan 2023}
+      \resumeItemListStart
+            \resumeItem{\normalsize{Spearheaded design and implementation of Microservices, leveraging Confd and other components to enhance system scalability providing 3 core features to customers, resulting in a better overall user experience.}}
+            \resumeItem{\normalsize{Developed and deployed a robust gRPC server, providing API access to network statistics from every tenant on a multi-tenant device, enabling real-time monitoring and analysis, resulting in enhanced user experience and greater visibility.}}  
+            \resumeItem{\normalsize{Designed upgrade functionality for a multi-tenant device making updates a breeze and allowed for atomic upgrades and rollback feature preserving important configurations reducing time required for upgrade by 70\%.}}  
+      \resumeItemListEnd  
 
-\resumeExpEntry{F5 Networks}{Hyderabad, India}{Software Engineer - 2}{Velocity}{Sept 2022 - Dec 2022}
-\resumeItemListStart
-\resumeItem{SSH Timeout for Tenants and Controllers}{Implemented backend code and schema for ssh timeout configuration from Confd. Kept in mind distributed and fail-switch nature of primary and secondary controllers and propogated changes in tenants}
-\resumeItemListEnd
+    \resumeSubheading
+      {Backend Engineering Intern}{} 
+      {Zendrive, Bangalore, India}{July 2019 - Dec 2019}
+      \resumeItemListStart
+            \resumeItem{\normalsize{Architected a data collection framework to fetch data from AWS Redshift, Elasticsearch, and Salesforce, to streamline data extraction and ingestion into BigQuery, enabling analytics team to monitor user metrics, identify emerging trends.}}
+            \resumeItem{\normalsize{Created slack bot to query and get notifications for jenkins pipelines reducing load on jenkins server by 20\% for getting info on running pipelines.}}  
+            \resumeItem{\normalsize{Revamped and optimized internal Flask API, resolving 3 critical bugs resulting in improved overall system performance.}}  
+      \resumeItemListEnd  
 
-\resumeExpEntry{F5 Networks}{Hyderabad, India}{Software Engineer - 1}{Velocity}{Sept 2020 - Aug 2022}
-\resumeItemListStart
-\resumeItem{Implemented Data Streaming for visibility into tenant}{Implemeted data streaming to send data to controllers from tenants for analytics using grpc}
-\resumeItem{Implemented backend code for cli interface}{Backend code implemented to configure the device based on configuration stored in Confd. Kept in mind compatibility in future upgrades while designing schema. Also considered upgrade scenarios for new schema changes.}
-\resumeItem{SNMP Trap implementation}{Implement backend code to handle snmp trap and handle configuration from Confd.}
-\resumeItem{Implemented Monitoring solution for velocity load balancers}{Implemented monitoring solution using influxdb and docker-compose to launch other components of solution. Made various configuration options available like retention policy and polling duration, etc}
-\resumeItemListEnd
+    % \resumeSubheading
+    %   {Job 3 Title}{} 
+    %   {Company Name, State, Country}{Month Year - Month Year}
+    %   \resumeItemListStart
+    %         \resumeItem{\normalsize{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac justo eget nunc ultricies congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.}}
+    %         \resumeItem{\normalsize{nteger hendrerit semper velit, non vehicula nibh feugiat nec. Vivamus nec consequat nisi. Suspendisse potenti. Sed consectetur elit sed aliquam eleifend.}}  
+    %         \resumeItem{\normalsize{Sed nec quam et urna placerat placerat. Aenean at mi id nunc venenatis feugiat}}  
+    %   \resumeItemListEnd  
 
-\resumeExpEntry{Zendrive}{Bangalore, India}{Software Development Intern}{Backend}{July 2019 - Dec 2019}
-\resumeItemListStart
-\resumeItem{Data collection scripts for bigquery}{Implemeted scripts to collected data from various source like s3, redshift, salesforce, elasticsearch to bigquery enabling analytics team to create dashboards using data in bigquery. Also implemented schema management to keep redshift and bigquery schema in sync and prevent failures.}
-\resumeItemListEnd
+    % copy and paste above resumeSubheading block to add more 
+  \resumeSubHeadingListEnd
+\vspace{-12pt}
 
-\end{document}c
+
+ %-----------PROJECTS-----------
+\section{\color{airforceblue}PROJECTS}    
+    \resumeItemListStart
+        \vspace{0.5pt}
+        \resumeItem{\normalsize{\textbf{KV Store} \textbar \textit {Go\textbar Raft Consensus \textbar Distributed Systems} \\ Developed a fault-tolerant key-value store in Go using Raft consensus for distributed systems. Ensured data integrity and scalability with robust fault handling and leader election mechanisms.}}
+        % \href{[url to project github repo]}{\color{blue}\underline{GitHub}}}
+        \vspace{-5pt}
+        
+        \resumeItem{\normalsize{\textbf{Modernizing XV6 OS: Enhanced Functionality} \textbar \textit{ C, Assembly  \textbar XV6 OS \textbar  Operating Systems development} \\ Enhanced XV6 OS with modern features including a custom bootloader, on-demand paging for efficient memory management, a user thread library for multi-threading support, and a virtual machine monitor for enhanced system virtualization capabilities.}}
+        %\href{[url to project demo]}{\color{blue}\underline{Try it!}}}
+        \vspace{-5pt}
+
+        \resumeItem{\normalsize{\textbf{Rust LSM/SST Tree Implementation} \textbar \textit{Rust \textbar LSM/SST Tree \textbar Data Storage} \\ Developed a high-performance LSM/SST Tree index in Rust, optimizing data retrieval and storage. Integrated bloom filters to efficiently identify non-existent keys, enhancing overall performance and efficiency.}} %\href{[url to github repo]}{\color{blue}\underline{GitHub}}}
+        \vspace{-5pt}
+
+        \resumeItem{\normalsize{\textbf{Video Transcoding \& Face Recognition with Lambda} \textbar \textit{Python \textbar AWS S3, Lambda, DynamoDB \textbar Face Recognition} \\ Built a seamless video transcoding and face recognition pipeline using AWS services. Upon user video upload to Amazon S3, triggers AWS Lambda functions for transcoding and face recognition, storing results efficiently in DynamoDB for further analysis and retrieval.}}
+        %\href{[url to project demo]}{\color{blue}\underline{Try it!}}}
+        \vspace{-5pt}
+
+        \resumeItem{\normalsize{\textbf{PDF Text Summarization \& Querying with LLM Model} \textbar \textit{PyTorch, Langchain \textbar Colab, Huggingface \textbar Mixtral AI} \\ Developed a text summarization and querying system for PDF documents using a fine-tuned LLM model. Utilized Streamlit UI for user interaction, with backend support from PyTorch, Langchain, Hugging Face, and Mixtral AI. Stored and retrieved document embeddings efficiently with Vector-store.}}
+        %\href{[url to project demo]}{\color{blue}\underline{Try it!}}}
+
+        % copy and paste above resumeItem block to add more 
+        
+    \resumeItemListEnd  
+   
+ \vspace{-12pt}
+%
+
+% %-----------Publications---------------
+% \section{\color{airforceblue}PUBLICATIONS}
+    
+%   \resumeItemListStart
+%     \resumeItem{\normalsize{Add Publication details here}}\href{[url link to publication]}{\color{blue}\underline{Link}}
+%     \vspace{-5pt}
+    
+%     \resumeItem{\normalsize{Add Publication details here}}\href{[url link to publication]}{\color{blue}\underline{Link}}
+%     \vspace{-5pt}
+
+%     % copy and paste above resumeItem block to add more 
+    
+%   \resumeItemListEnd 
+      
+% \vspace{-8pt}
+
+% %-----------EXTRACURRICULAR---------------
+% \section{\color{airforceblue}EXTRACURRICULAR ACTIVITIES}
+    
+%       \resumeItemListStart
+%         \resumeItem{\normalsize{\textbf{Event Coordinator} in univesrity Club - {Month Year - Month Year} }} 
+%         \vspace{-5pt}
+        
+%         \resumeItem{\normalsize{\textbf{Executive member} in Robotics Club - } {Month Year - Month Year}}    
+%         \vspace{-5pt}
+
+%         % copy and paste above resumeItem block to add more 
+%       \resumeItemListEnd 
+      
+\vspace{-12pt}
+
+\end{document}
